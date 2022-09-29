@@ -25,9 +25,6 @@ function App() {
             owner: { login },
           } = items;
 
-          {
-            /* console.log(login); */
-          }
           return (
             <section key={items.id}>
               <h4>Reponame - {name}</h4>
@@ -43,5 +40,4 @@ function App() {
 }
 
 export default App;
-
 
