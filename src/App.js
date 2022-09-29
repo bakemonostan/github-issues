@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 function App() {
+  const [userData, setUserData] = useState('');
+
+  const handleUser = async () => {
+    const response = await fetch('https://api.github.com/users/imsun/repos');
+    const data = await response.json();
+    setUserData(data);
+  };
+
+  useEffect(() => {
+    handleUser();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {userData &&
+        userData.map((items) => {
+          const {
+            name,
+            open_issues: issues,
+            owner: { login },
+          } = items;
+
+          {
+            /* console.log(login); */
+          }
+          return (
+            <section key={items.id}>
+              <h4>Reponame - {name}</h4>
+              <p>Number of Issues - {issues}</p>
+              <Link to={`/repo/${name}/issue/${login}`}>
+                <button>Issues</button>
+              </Link>
+            </section>
+          );
+        })}
     </div>
   );
 }
 
 export default App;
+
+// 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
+

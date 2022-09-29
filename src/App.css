@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.5rem;
 }
 
 .App-logo {
@@ -28,6 +33,15 @@
   color: #61dafb;
 }
 
+section {
+  background: #eee;
+  padding: 1rem;
+  border: 1px solid gray;
+  flex: 0 0 200px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +50,4 @@
     transform: rotate(360deg);
   }
 }
+
