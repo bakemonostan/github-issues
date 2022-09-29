@@ -6,15 +6,11 @@ const Issues = () => {
 
   const params = useParams();
   const { repoId: repo, issuesId: login } = params;
-  //   console.log(params);
-  //   console.log(login, repo);
-
   const handleRepo = async () => {
     const response = await fetch(
       `https://api.github.com/repos/${login}/${repo}/issues`
     );
     const data = await response.json();
-    console.log(data);
     setIssues(data);
   };
 
